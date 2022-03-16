@@ -2,7 +2,7 @@
 Slack App Clone API
 
 ## Following are the APIs provided
-- GET /organization
+- GET /organization/1ae5241e-a51b-11ec-b909-0242ac120002
    ```js
     {
       "organization_name": "Full Stack",
