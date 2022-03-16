@@ -47,11 +47,10 @@ Slack App Clone API
     }]
    ```
    
-- POST /messages
+- GET /messages/4f0300c2-a51b-11ec-b909-0242ac120002/1ae5241e-a51b-11ec-b909-0242ac120002 
+/messages/<channel_id>/<organization_id>
  ```js
     [{
-      "channel_id": "4f0300c2-a51b-11ec-b909-0242ac120002",
-      "organization_id": "1ae5241e-a51b-11ec-b909-0242ac120002",
       messages:[{
            "from": "1e780ade-a524-11ec-b909-0242ac120002",
            "to": "7f093ecc-a524-11ec-b909-0242ac120002",
