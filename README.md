@@ -43,7 +43,19 @@ Slack App Clone API
       "organization_id": "1ae5241e-a51b-11ec-b909-0242ac120002",
        "description": "Slack channels",
       "is_private": true,
-       "members":["1e780ade-a524-11ec-b909-0242ac120002","6ef005fc-a524-11ec-b909-0242ac120002","7f093ecc-a524-11ec-b909-0242ac120002"]
+       "members":[{
+      "username": "John",
+      "email": "john@gmail.com",
+      "user_id": "1e780ade-a524-11ec-b909-0242ac120002"
+    },{
+      "username": "Bob",
+      "email": "bob@gmail.com",
+      "user_id": "6ef005fc-a524-11ec-b909-0242ac120002"
+    },{
+      "username": "Alex",
+      "email": "alex@gmail.com",
+      "user_id": "7f093ecc-a524-11ec-b909-0242ac120002"
+    }]
     }]
    ```
    
