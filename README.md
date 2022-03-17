@@ -12,16 +12,16 @@ Slack App Clone API
  - GET /users
    ```js
     [{
-      "username": "shankar",
-      "email": "shangan.23@gmail.com",
+      "username": "John",
+      "email": "john@gmail.com",
       "user_id": "1e780ade-a524-11ec-b909-0242ac120002"
     },{
-      "username": "karthick",
-      "email": "karthikeyan.pa@gmail.com",
+      "username": "Bob",
+      "email": "bob@gmail.com",
       "user_id": "6ef005fc-a524-11ec-b909-0242ac120002"
     },{
-      "username": "venkat",
-      "email": "ramsunvtech@gmail.com",
+      "username": "Alex",
+      "email": "alex@gmail.com",
       "user_id": "7f093ecc-a524-11ec-b909-0242ac120002"
     }]
    ```
@@ -38,7 +38,7 @@ Slack App Clone API
 - GET /channel
  ```js
     [{
-      "channel_name": "#slack",
+      "channel_name": "slack",
       "channel_id": "4f0300c2-a51b-11ec-b909-0242ac120002",
       "organization_id": "1ae5241e-a51b-11ec-b909-0242ac120002",
        "description": "Slack channels",
