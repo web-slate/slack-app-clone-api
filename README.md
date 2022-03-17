@@ -52,7 +52,11 @@ Slack App Clone API
  ```js
     [{
       messages:[{
-           "from": "1e780ade-a524-11ec-b909-0242ac120002",
+           "from": {
+               "username": "John",
+               "email": "john@gmail.com",
+               "user_id": "1e780ade-a524-11ec-b909-0242ac120002"
+             },
            "message":"This is test message",
            "datetime":"1647433741"
       }]
