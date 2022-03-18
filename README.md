@@ -1,4 +1,8 @@
-# slack-app-clone-api
+<div align="right">
+    <b><a href="https://github.com/web-slate/slack-app-clone-hub/">↥ Back to Slack Hub</a></b>
+</div>
+
+# Slack-app-clone-api
 Slack App Clone API
 
 ## Following are the APIs provided
@@ -28,7 +32,7 @@ Slack App Clone API
 - POST /channel
   ```js
     {
-      "channel_name": "#slack",
+      "channel_name": "slack",
       "organization_id": "1ae5241e-a51b-11ec-b909-0242ac120002",
       "description": "Slack channels",
       "is_private": true/false,
@@ -38,10 +42,10 @@ Slack App Clone API
 - GET /channel
  ```js
     [{
-      "channel_name": "slack",
+      "channel_name": "general",
       "channel_id": "4f0300c2-a51b-11ec-b909-0242ac120002",
       "organization_id": "1ae5241e-a51b-11ec-b909-0242ac120002",
-       "description": "Slack channels",
+       "description": "General channels",
       "is_private": true,
        "members":[{
       "username": "John",
