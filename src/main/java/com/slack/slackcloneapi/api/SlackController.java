@@ -46,8 +46,19 @@ public class SlackController {
     @PostMapping(value = "/addusers")
     public ResponseEntity<?> addUsers(@RequestBody Users users) {
         if(users.getUsername() != null && users.getEmail() != null){
-            userService.addUsers(users);
-            return ResponseEntity.ok().body("Successfully Added User");
+            List<Users> userResponse = userService.getAllUsers();
+            boolean bolUserCheck = true;
+            for(Users checkUser : userResponse){
+                if(checkUser.getUsername().equalsIgnoreCase(users.getUsername()) && checkUser.getEmail().equalsIgnoreCase(users.getEmail()) ){
+                    bolUserCheck = false;
+                }
+            }
+            if(bolUserCheck) {
+                userService.addUsers(users);
+                return ResponseEntity.ok().body("Successfully Added User");
+            }else{
+                return ResponseEntity.ok().body("User Details Already Exists");
+            }
         }else{
             return ResponseEntity.badRequest().build();
         }
@@ -55,8 +66,19 @@ public class SlackController {
 
     @PostMapping(value = "/channel")
     public ResponseEntity<?> addChannel(@RequestBody ChannelRequest channelRequest) {
-             channelService.addChannel(channelRequest);
+        List<ChannelMembers> channelResponse = channelService.getChannel();
+        boolean checkChannelName = true;
+        for (ChannelMembers channelMembers : channelResponse) {
+            if (channelMembers.getChannel_name().equalsIgnoreCase(channelRequest.getChannel_name())) {
+                checkChannelName = false;
+            }
+        }
+        if (checkChannelName) {
+            channelService.addChannel(channelRequest);
             return ResponseEntity.ok().body("Successfully Added Channel");
+        } else {
+            return ResponseEntity.ok().body("Channel Name Already Exists");
+        }
 
     }
 
@@ -67,8 +89,8 @@ public class SlackController {
 
     }
 
-    @GetMapping(value = "/messages/{id}/{id1}/messages/{chanelid}/{organizationid}")
-    public ResponseEntity<?> getMessages(@PathVariable String id,@PathVariable String id1,@PathVariable String chanelid,@PathVariable String organizationid) {
+    @GetMapping(value = "/messages/{chanelid}/{organizationid}")
+    public ResponseEntity<?> getMessages(@PathVariable String chanelid,@PathVariable String organizationid) {
         MessagesReqeust messagesReqeust = new MessagesReqeust();
         messagesReqeust.setMessages(testMsgData());
         List<MessagesReqeust> objMessageResponse= new ArrayList<>();
