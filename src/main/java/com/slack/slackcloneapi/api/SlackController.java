@@ -45,6 +45,7 @@ public class SlackController {
 
     @PostMapping(value = "/addusers")
     public ResponseEntity<?> addUsers(@RequestBody Users users) {
+        APIResponse apiResponse = new APIResponse();
         if(users.getUsername() != null && users.getEmail() != null){
             List<Users> userResponse = userService.getAllUsers();
             boolean bolUserCheck = true;
@@ -55,10 +56,12 @@ public class SlackController {
             }
             if(bolUserCheck) {
                 userService.addUsers(users);
-                return ResponseEntity.ok().body("Successfully Added User");
+                apiResponse.setMessage("Successfully Added User");
             }else{
-                return ResponseEntity.ok().body("User Details Already Exists");
+                apiResponse.setMessage("User Details Already Exists");
             }
+
+            return ResponseEntity.ok().body(apiResponse);
         }else{
             return ResponseEntity.badRequest().build();
         }
@@ -67,6 +70,7 @@ public class SlackController {
     @PostMapping(value = "/channel")
     public ResponseEntity<?> addChannel(@RequestBody ChannelRequest channelRequest) {
         List<ChannelMembers> channelResponse = channelService.getChannel();
+        APIResponse apiResponse = new APIResponse();
         boolean checkChannelName = true;
         for (ChannelMembers channelMembers : channelResponse) {
             if (channelMembers.getChannel_name().equalsIgnoreCase(channelRequest.getChannel_name())) {
@@ -75,11 +79,11 @@ public class SlackController {
         }
         if (checkChannelName) {
             channelService.addChannel(channelRequest);
-            return ResponseEntity.ok().body("Successfully Added Channel");
+            apiResponse.setMessage("Successfully Added Channel");
         } else {
-            return ResponseEntity.ok().body("Channel Name Already Exists");
+            apiResponse.setMessage("Channel Name Already Exists");
         }
-
+        return ResponseEntity.ok().body(apiResponse);
     }
 
     @GetMapping(value = "/channel")
