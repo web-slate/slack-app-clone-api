@@ -6,6 +6,7 @@ import com.slack.slackcloneapi.dto.*;
 import com.slack.slackcloneapi.service.ChannelService;
 import com.slack.slackcloneapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,11 +58,14 @@ public class SlackController {
             if(bolUserCheck) {
                 userService.addUsers(users);
                 apiResponse.setMessage("Successfully Added User");
+                return ResponseEntity.ok().body(apiResponse);
             }else{
                 apiResponse.setMessage("User Details Already Exists");
+                return ResponseEntity.status(HttpStatus.CONFLICT).body(apiResponse);
             }
 
-            return ResponseEntity.ok().body(apiResponse);
+
+
         }else{
             return ResponseEntity.badRequest().build();
         }
@@ -80,10 +84,12 @@ public class SlackController {
         if (checkChannelName) {
             channelService.addChannel(channelRequest);
             apiResponse.setMessage("Successfully Added Channel");
+            return ResponseEntity.ok().body(apiResponse);
         } else {
             apiResponse.setMessage("Channel Name Already Exists");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(apiResponse);
         }
-        return ResponseEntity.ok().body(apiResponse);
+
     }
 
     @GetMapping(value = "/channel")
