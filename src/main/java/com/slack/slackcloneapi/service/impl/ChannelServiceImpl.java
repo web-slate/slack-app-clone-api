@@ -77,6 +77,7 @@ public class ChannelServiceImpl implements ChannelService {
     private ChannelMembers convertDTO(Channel channel, List<User> lstUser) {
         ChannelMembers channelMembers = new ChannelMembers();
         channelMembers.setChannel_name(channel.getChannelName());
+        channelMembers.setChannel_id(channel.getChannelId());
         channelMembers.setOrganization_id(channel.getOrganizationId());
         channelMembers.setDescription(channel.getDescription());
         channelMembers.setIs_private(channel.getIsPrivate());
