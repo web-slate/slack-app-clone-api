@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "b3687ed1-c2a5-4bef-b72b-975aef021865",
+		"name": "Slack-Clone-Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"channel_name\": \"slack\",\n    \"organization_id\": \"1ae5241e-a51b-11ec-b909-0242ac120002\",\n    \"description\": \"Slack channels\",\n    \"is_private\": true/false,\n    \"members\": [\n        \"1e780ade-a524-11ec-b909-0242ac120002\",\n        \"6ef005fc-a524-11ec-b909-0242ac120002\",\n        \"7f093ecc-a524-11ec-b909-0242ac120002\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://slackclone001.herokuapp.com/users",
+					"protocol": "https",
+					"host": [
+						"slackclone001",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Channel List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://slackclone001.herokuapp.com/channel",
+					"protocol": "https",
+					"host": [
+						"slackclone001",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"channel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Messages List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"messages\": [\n            {\n                \"from\": {\n                    \"username\": \"John\",\n                    \"email\": \"john@gmail.com\",\n                    \"user_id\": \"1e780ade-a524-11ec-b909-0242ac120002\"\n                },\n                \"message\": \"This is test message\",\n                \"datetime\": \"1647433741\"\n            }\n        ]\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://slackclone001.herokuapp.com/messages/4f0300c2-a51b-11ec-b909-0242ac120002/1ae5241e-a51b-11ec-b909/messages/4f0300c2-a51b-11ec-b909-0242ac120002/1ae5241e-a51b-11ec-b909-0242ac120002",
+					"protocol": "https",
+					"host": [
+						"slackclone001",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"messages",
+						"4f0300c2-a51b-11ec-b909-0242ac120002",
+						"1ae5241e-a51b-11ec-b909",
+						"messages",
+						"4f0300c2-a51b-11ec-b909-0242ac120002",
+						"1ae5241e-a51b-11ec-b909-0242ac120002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Organization by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://slackclone001.herokuapp.com/organization/1ae5241e-a51b-11ec-b909-0242ac120002",
+					"protocol": "https",
+					"host": [
+						"slackclone001",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"organization",
+						"1ae5241e-a51b-11ec-b909-0242ac120002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Channel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"channel_name\": \"general\",\n    \"organization_id\": \"1ae5241e-a51b-11ec-b909-0242ac120002\",\n    \"description\": \"general channels\",\n    \"is_private\": true,\n    \"members\":[\"1e780ade-a524-11ec-b909-0242ac120002\",\"6ef005fc-a524-11ec-b909-0242ac120002\",\"7f093ecc-a524-11ec-b909-0242ac120002\"]\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://slackclone001.herokuapp.com/channel",
+					"protocol": "https",
+					"host": [
+						"slackclone001",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"channel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"username\": \"udhay\",\n        \"email\": \"udhay@gmail.com\",\n        \"user_id\": \"c1d87c32-3c07-461c-9e15-b84337569caa\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://slackclone001.herokuapp.com/addusers",
+					"protocol": "https",
+					"host": [
+						"slackclone001",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"addusers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
